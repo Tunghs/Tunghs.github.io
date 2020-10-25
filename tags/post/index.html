@@ -141,7 +141,72 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/05/07/say-hello/" class="image is-7by1">
+        <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="image is-7by1">
+            <img class="thumbnail" src="/img/CSharp/Cover.png" alt="WPF MVVM DataGrid 동적으로 사용하기">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-10-25T10:51:42.000Z">2020-10-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dev/">Dev</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Dev/WPF/">WPF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 451 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/">WPF MVVM DataGrid 동적으로 사용하기</a>
+            
+        </h1>
+        <div class="content">
+            <p>DataGrid를 동적으로 변경하며 결과를 보여줄 일이 생겼다. 다만 평소에는 <code>DataGrid</code>에 <code>ObservableCollection</code>을 바인딩해서 사용했기 때문에 항상 컬럼값은 고정이었는데, <code>DataTable</code>을 바인딩하면 동적으로 변경 가능하다고 해서 적용해봤다.</p>
+<p>예시로 아래와 같이 UI 구성하고 Run 버튼을 누르면 <code>TextBox</code>에 입력된 숫자만큼 컬럼이 생성되는 프로그램을 간단히 만들었다.</p>
+<p><img src="/img/2020-10-25-WPF-Dynamic-Datagrid/1.PNG" alt=""></p>
+<p>먼저 해당 <strong>View</strong>의 <code>.xaml</code>에서 <code>DataGrid</code>에 아래와 같이 <code>DataTable</code>을 바인딩한다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DataGrid</span> <span class="attr">IsReadOnly</span>=<span class="string">"True"</span> <span class="attr">ColumnWidth</span>=<span class="string">"*"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">AutoGenerateColumns</span>=<span class="string">"True"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">VirtualizingStackPanel.IsVirtualizing</span> =<span class="string">"True"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">ItemsSource</span>=<span class="string">"&#123;Binding DataTable, UpdateSourceTrigger=PropertyChanged&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">DataGrid</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>다음은 <strong>ViewModel</strong>에 <code>DataGrid</code>를 선언해 주면 된다.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UI Variable</span></span><br><span class="line"><span class="keyword">private</span> DataTable _DataTable;</span><br><span class="line"><span class="keyword">public</span> DataTable DataTable</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span> =&gt; _DataTable;</span><br><span class="line">    <span class="keyword">set</span> =&gt; Set(<span class="keyword">ref</span> _DataTable, <span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 컬럼 개수를 받아오기 위해 TextBox에 바인딩</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">string</span> _ColumnCount;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> ColumnCount</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span> =&gt; _ColumnCount;</span><br><span class="line">    <span class="keyword">set</span> =&gt; Set(<span class="keyword">ref</span> _ColumnCount, <span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line"></span><br><span class="line"><span class="comment">// DataTable 변경</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ChangeDataTable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DataTable dt = <span class="keyword">new</span> DataTable();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 입력한 컬럼 개수만큼 Column 생성</span></span><br><span class="line">    <span class="keyword">int</span> columnCount = <span class="keyword">int</span>.Parse(ColumnCount);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; columnCount; index++)</span><br><span class="line">    &#123;</span><br><span class="line">        dt.Columns.Add(<span class="string">$"INDEX <span class="subst">&#123;index&#125;</span>"</span>, <span class="keyword">typeof</span>(<span class="keyword">string</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Row 추가</span></span><br><span class="line">    DataRow row = dt.NewRow();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; columnCount; index++)</span><br><span class="line">    &#123;</span><br><span class="line">        row[index] = <span class="string">$"<span class="subst">&#123;index&#125;</span>"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dt.Rows.Add(row);</span><br><span class="line"></span><br><span class="line">    DataTable = dt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>코드를 작성하면 아래와 같이 잘 동작한다.</p>
+<p><img src="/img/2020-10-25-WPF-Dynamic-Datagrid/2.PNG" alt=""></p>
+<hr>
+<p>이후 실제 사용하려는 프로젝트에 적용했었는데 <code>DataTable</code>이 업데이트가 안되는 문제가 생겼다. 분명 똑같이 사용했고 코드에 문제도 없다고 생각되었는데… </p>
+<p>이것저것 만져보다가 혹시나 해서 컬럼명에 사용했던 특수문자를 제거하니 <code>DataTable</code>이 제대로 업데이트 되었다. 몇번의 테스트 후 내린 결론은 컬럼명에 특수문자가 포함되어 있다면 <code>DataTable</code>이 업데이트되지 않는 문제가 발생하는 것 같다.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="image is-7by1">
             <img class="thumbnail" src="/img/Say-Hello/thumbnail22.png" alt="Git Blog 다시 시작">
         </a>
     </div>
@@ -151,6 +216,10 @@
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-05-07T13:05:04.000Z">2020-05-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Etc/">Etc</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
@@ -165,7 +234,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/07/say-hello/">Git Blog 다시 시작</a>
+                <a class="has-link-black-ter" href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/">Git Blog 다시 시작</a>
             
         </h1>
         <div class="content">
@@ -232,7 +301,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            7
+                            8
                         </p>
                     </a>
                 </div>
@@ -244,7 +313,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            0
+                            6
                         </p>
                     </a>
                 </div>
@@ -333,7 +402,55 @@
                 Categories
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/Conference/">
+            <span class="level-start">
+                <span class="level-item">Conference</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Dev/">
+            <span class="level-start">
+                <span class="level-item">Dev</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Dev/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Dev/WPF/">
+            <span class="level-start">
+                <span class="level-item">WPF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Etc/">
+            <span class="level-start">
+                <span class="level-item">Etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Hexo/">
+            <span class="level-start">
+                <span class="level-item">Hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -344,7 +461,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/post/" style="font-size: 10px;">post</a>
+        <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/post/" style="font-size: 20px;">post</a>
     </div>
 </div>
     
@@ -359,6 +476,25 @@
         
         <article class="media">
             
+            <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/CSharp/Cover.png" alt="WPF MVVM DataGrid 동적으로 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-10-25T10:51:42.000Z">2020-10-25</time></div>
+                    <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WPF MVVM DataGrid 동적으로 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/WPF/">WPF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기">
@@ -370,7 +506,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-09T08:29:13.000Z">2020-05-09</time></div>
                     <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -378,7 +514,7 @@
         
         <article class="media">
             
-            <a href="/2020/05/07/say-hello/" class="media-left">
+            <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/img/Say-Hello/thumbnail22.png" alt="Git Blog 다시 시작">
                 </p>
@@ -387,9 +523,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T13:05:04.000Z">2020-05-07</time></div>
-                    <a href="/2020/05/07/say-hello/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
+                    <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Etc/">Etc</a>
                     </p>
                 </div>
             </div>
@@ -408,7 +544,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-13T23:49:27.000Z">2019-10-14</time></div>
                     <a href="/2019/10/14/2019-10-14-Hexo-Blog-Graph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo 블로그 포스팅에 Flowchart 사용하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -427,26 +563,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:17:27.000Z">2019-09-16</time></div>
                     <a href="/2019/09/16/2019-09-16-Python-File-IO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python 파일 입출력</a>
                     <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/2019-09-07-Apply-Django-Bootstrap/main.png" alt="Django Bootstrap 적용하기">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T10:46:32.000Z">2019-09-07</time></div>
-                    <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Django Bootstrap 적용하기</a>
-                    <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/Python/">Python</a>
                     </p>
                 </div>
             </div>
@@ -462,6 +579,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/05/">
@@ -551,7 +679,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/post/">
                         <span class="tag">post</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -579,6 +707,25 @@
         
         <article class="media">
             
+            <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/CSharp/Cover.png" alt="WPF MVVM DataGrid 동적으로 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-10-25T10:51:42.000Z">2020-10-25</time></div>
+                    <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WPF MVVM DataGrid 동적으로 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/WPF/">WPF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기">
@@ -590,7 +737,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-09T08:29:13.000Z">2020-05-09</time></div>
                     <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -598,7 +745,7 @@
         
         <article class="media">
             
-            <a href="/2020/05/07/say-hello/" class="media-left">
+            <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/img/Say-Hello/thumbnail22.png" alt="Git Blog 다시 시작">
                 </p>
@@ -607,9 +754,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T13:05:04.000Z">2020-05-07</time></div>
-                    <a href="/2020/05/07/say-hello/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
+                    <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Etc/">Etc</a>
                     </p>
                 </div>
             </div>
@@ -628,7 +775,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-13T23:49:27.000Z">2019-10-14</time></div>
                     <a href="/2019/10/14/2019-10-14-Hexo-Blog-Graph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo 블로그 포스팅에 Flowchart 사용하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -647,26 +794,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:17:27.000Z">2019-09-16</time></div>
                     <a href="/2019/09/16/2019-09-16-Python-File-IO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python 파일 입출력</a>
                     <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/2019-09-07-Apply-Django-Bootstrap/main.png" alt="Django Bootstrap 적용하기">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T10:46:32.000Z">2019-09-07</time></div>
-                    <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Django Bootstrap 적용하기</a>
-                    <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/Python/">Python</a>
                     </p>
                 </div>
             </div>
@@ -682,6 +810,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/05/">
@@ -771,7 +910,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/post/">
                         <span class="tag">post</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

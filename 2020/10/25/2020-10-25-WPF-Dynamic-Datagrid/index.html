@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Python으로 디스코드 봇 만들기 - Tungh&#39;s Tech</title>
+<title>WPF MVVM DataGrid 동적으로 사용하기 - Tungh&#39;s Tech</title>
 
 
-    <meta name="description" content="한 번씩 디스코드를 쓰다가 봇에 대해 최근에 알게 되었다.많이 쓰는 기능인 노래 제공뿐만 아니라 다른 편의 사항도 제공해 줄 수 있을 것 같아 직접 제작해보기로 했다. 개발 언어는 Python이며, 코드 편집기는 PyCharm을 사용했다. 디스코드 봇 생성먼저 디스코드 개발자 페이지로 이동해서 계정을 생성해준다.  만약 창이 이렇게 보이지 않는다면 먼저 디">
+    <meta name="description" content="DataGrid를 동적으로 변경하며 결과를 보여줄 일이 생겼다. 다만 평소에는 DataGrid에 ObservableCollection을 바인딩해서 사용했기 때문에 항상 컬럼값은 고정이었는데, DataTable을 바인딩하면 동적으로 변경 가능하다고 해서 적용해봤다. 예시로 아래와 같이 UI 구성하고 Run 버튼을 누르면 TextBox에 입력된 숫자만큼 컬럼이">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python으로 디스코드 봇 만들기">
-<meta property="og:url" content="https://tunghs.github.io/2019/08/08/Make-a-Discord-Bot-with-Python/index.html">
+<meta property="og:title" content="WPF MVVM DataGrid 동적으로 사용하기">
+<meta property="og:url" content="https://tunghs.github.io/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/index.html">
 <meta property="og:site_name" content="Tungh&#39;s Tech">
-<meta property="og:description" content="한 번씩 디스코드를 쓰다가 봇에 대해 최근에 알게 되었다.많이 쓰는 기능인 노래 제공뿐만 아니라 다른 편의 사항도 제공해 줄 수 있을 것 같아 직접 제작해보기로 했다. 개발 언어는 Python이며, 코드 편집기는 PyCharm을 사용했다. 디스코드 봇 생성먼저 디스코드 개발자 페이지로 이동해서 계정을 생성해준다.  만약 창이 이렇게 보이지 않는다면 먼저 디">
+<meta property="og:description" content="DataGrid를 동적으로 변경하며 결과를 보여줄 일이 생겼다. 다만 평소에는 DataGrid에 ObservableCollection을 바인딩해서 사용했기 때문에 항상 컬럼값은 고정이었는데, DataTable을 바인딩하면 동적으로 변경 가능하다고 해서 적용해봤다. 예시로 아래와 같이 UI 구성하고 Run 버튼을 누르면 TextBox에 입력된 숫자만큼 컬럼이">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tunghs.github.io/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_developers_Site.PNG">
-<meta property="article:published_time" content="2019-08-08T12:31:13.000Z">
-<meta property="article:modified_time" content="2020-05-09T08:59:44.695Z">
+<meta property="og:image" content="https://tunghs.github.io/img/CSharp/Cover.png">
+<meta property="article:published_time" content="2020-10-25T10:51:42.000Z">
+<meta property="article:modified_time" content="2020-10-25T13:14:28.752Z">
 <meta property="article:author" content="Tunghs">
-<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="post">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tunghs.github.io/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_developers_Site.PNG">
+<meta name="twitter:image" content="https://tunghs.github.io/img/CSharp/Cover.png">
 
 
 
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Python으로 디스코드 봇 만들기" height="28">
+                <img src="/images/logo.png" alt="WPF MVVM DataGrid 동적으로 사용하기" height="28">
             
             </a>
         </div>
@@ -135,7 +135,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_developers_Site.PNG" alt="Python으로 디스코드 봇 만들기">
+            <img class="thumbnail" src="/img/CSharp/Cover.png" alt="WPF MVVM DataGrid 동적으로 사용하기">
         </span>
     </div>
     
@@ -143,13 +143,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-08T12:31:13.000Z">2019-08-08</time>
+                <time class="level-item has-text-grey" datetime="2020-10-25T10:51:42.000Z">2020-10-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dev/">Dev</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Dev/WPF/">WPF</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1118 words)
+                    3 minutes read (About 451 words)
                 </span>
                 
                 
@@ -158,55 +162,34 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Python으로 디스코드 봇 만들기
+                WPF MVVM DataGrid 동적으로 사용하기
             
         </h1>
         <div class="content">
-            <p>한 번씩 디스코드를 쓰다가 봇에 대해 최근에 알게 되었다.<br>많이 쓰는 기능인 노래 제공뿐만 아니라 다른 편의 사항도 제공해 줄 수 있을 것 같아 직접 제작해보기로 했다.</p>
-<p>개발 언어는 <code>Python</code>이며, 코드 편집기는 <code>PyCharm</code>을 사용했다.</p>
-<h2 id="디스코드-봇-생성"><a href="#디스코드-봇-생성" class="headerlink" title="디스코드 봇 생성"></a>디스코드 봇 생성</h2><p>먼저 <a href="https://discordapp.com/developers/applications/">디스코드 개발자 페이지</a>로 이동해서 계정을 생성해준다.</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_developers_Site.PNG" alt=""></p>
-<p>만약 창이 이렇게 보이지 않는다면 먼저 디스코드 회원가입부터 해주자.<br>그리고 우측 상단의 <strong>New Application</strong>을 눌러준다.</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_New_Application.PNG" alt=""></p>
-<p>이름, 설명, 아이콘 등 을 설정하고 우측 <strong>SETTINGS</strong>에서 <strong>BOT</strong>을 눌러준다.</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_New_Bot.PNG" alt=""></p>
-<p><strong>Add Bot</strong>을 눌러 봇을 생성한다.<br>그리고 <strong>Click to Reveal Token</strong>을 눌러 나오는 코드를 복사해둔다.</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_OAuth2.PNG" alt=""></p>
-<p>토큰 복사 후 <strong>SETTINGS</strong>에서 <strong>OAuth2</strong>로 이동한다.  </p>
-<p>OAuth2가 뭔지 궁금해서 찾아보니 아래와 같다. (구글 번역기야 고마워^^!)</p>
+            <p>DataGrid를 동적으로 변경하며 결과를 보여줄 일이 생겼다. 다만 평소에는 <code>DataGrid</code>에 <code>ObservableCollection</code>을 바인딩해서 사용했기 때문에 항상 컬럼값은 고정이었는데, <code>DataTable</code>을 바인딩하면 동적으로 변경 가능하다고 해서 적용해봤다.</p>
+<p>예시로 아래와 같이 UI 구성하고 Run 버튼을 누르면 <code>TextBox</code>에 입력된 숫자만큼 컬럼이 생성되는 프로그램을 간단히 만들었다.</p>
+<p><img src="/img/2020-10-25-WPF-Dynamic-Datagrid/1.PNG" alt=""></p>
+<p>먼저 해당 <strong>View</strong>의 <code>.xaml</code>에서 <code>DataGrid</code>에 아래와 같이 <code>DataTable</code>을 바인딩한다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DataGrid</span> <span class="attr">IsReadOnly</span>=<span class="string">"True"</span> <span class="attr">ColumnWidth</span>=<span class="string">"*"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">AutoGenerateColumns</span>=<span class="string">"True"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">VirtualizingStackPanel.IsVirtualizing</span> =<span class="string">"True"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">ItemsSource</span>=<span class="string">"&#123;Binding DataTable, UpdateSourceTrigger=PropertyChanged&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">DataGrid</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>다음은 <strong>ViewModel</strong>에 <code>DataGrid</code>를 선언해 주면 된다.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UI Variable</span></span><br><span class="line"><span class="keyword">private</span> DataTable _DataTable;</span><br><span class="line"><span class="keyword">public</span> DataTable DataTable</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span> =&gt; _DataTable;</span><br><span class="line">    <span class="keyword">set</span> =&gt; Set(<span class="keyword">ref</span> _DataTable, <span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 컬럼 개수를 받아오기 위해 TextBox에 바인딩</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">string</span> _ColumnCount;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> ColumnCount</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span> =&gt; _ColumnCount;</span><br><span class="line">    <span class="keyword">set</span> =&gt; Set(<span class="keyword">ref</span> _ColumnCount, <span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line"></span><br><span class="line"><span class="comment">// DataTable 변경</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ChangeDataTable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DataTable dt = <span class="keyword">new</span> DataTable();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 입력한 컬럼 개수만큼 Column 생성</span></span><br><span class="line">    <span class="keyword">int</span> columnCount = <span class="keyword">int</span>.Parse(ColumnCount);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; columnCount; index++)</span><br><span class="line">    &#123;</span><br><span class="line">        dt.Columns.Add(<span class="string">$"INDEX <span class="subst">&#123;index&#125;</span>"</span>, <span class="keyword">typeof</span>(<span class="keyword">string</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Row 추가</span></span><br><span class="line">    DataRow row = dt.NewRow();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; columnCount; index++)</span><br><span class="line">    &#123;</span><br><span class="line">        row[index] = <span class="string">$"<span class="subst">&#123;index&#125;</span>"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dt.Rows.Add(row);</span><br><span class="line"></span><br><span class="line">    DataTable = dt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>코드를 작성하면 아래와 같이 잘 동작한다.</p>
+<p><img src="/img/2020-10-25-WPF-Dynamic-Datagrid/2.PNG" alt=""></p>
 <hr>
-<p><em>응용 프로그램 개발자는 OAuth2를 통해 Discord API의 인증 및 데이터를 활용하는 응용 프로그램을 구축 할 수 있습니다.<br>Discord에는 여러 유형의 OAuth2 인증이 있습니다.<br>인증 코드 부여, 암시 적 부여, 클라이언트 자격 증명 및 봇 및 웹 후크에 대한 수정 된 특별 특별 흐름을 지원합니다.</em>  </p>
-<hr>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_OAuth2_CheckBox.PNG" alt=""></p>
-<p>아래로 스크롤을 내리면 <strong>SCOPES</strong>이 보이고 <strong>bot</strong>을 선택하면 아래와 같이 <strong>BOT PERMISSIONS</strong>가 추가로 보인다.</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_OAuth2_BotPermissions.PNG" alt="">{: width=”100%” height=”100%”}</p>
-<p>봇에게 주고 싶은 권한을 체크하고 <strong>SCOPES</strong>안의 주소를 복사한다.<br>참고로 나는 <code>Send Messages</code>와 <code>Read Message History</code>에 체크했다.</p>
-<p>이후 디스코드 봇을 초대할 서버를 생성하고 복사한 주소로 접속한다.</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_Invitation.PNG" alt=""></p>
-<p>복사한 주소로 접속한 후 만들어준 서버에 초대한다.</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_Invitation_in_Discord.PNG" alt=""></p>
-<p>짜잔! 서버에 우리가 생성한 봇이 들어왔다.  </p>
-<h2 id="Python-코드-작성"><a href="#Python-코드-작성" class="headerlink" title="Python 코드 작성"></a>Python 코드 작성</h2><p>디스코드 봇을 파이썬으로 작성하기 편하게 제작된 모듈이 있는데 <a href="https://github.com/Rapptz/discord.py">discord.py</a>을 보고 참고하였다.</p>
-<p>먼저 라이브러리를 설치해준다.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Windows</span><br><span class="line">pip install discord</span><br></pre></td></tr></table></figure>
+<p>이후 실제 사용하려는 프로젝트에 적용했었는데 <code>DataTable</code>이 업데이트가 안되는 문제가 생겼다. 분명 똑같이 사용했고 코드에 문제도 없다고 생각되었는데… </p>
+<p>이것저것 만져보다가 혹시나 해서 컬럼명에 사용했던 특수문자를 제거하니 <code>DataTable</code>이 제대로 업데이트 되었다. 몇번의 테스트 후 내린 결론은 컬럼명에 특수문자가 포함되어 있다면 <code>DataTable</code>이 업데이트되지 않는 문제가 발생하는 것 같다.</p>
 
-<p>나는 먼저 평소 라이브러리를 설치하듯이 위와 같이 설치했는데 다운로드 되는 것처럼 보이더니 코드에서 import 되지 않아서<br><a href="https://github.com/Rapptz/discord.py">discord.py</a>에 나온 방법으로 다시 설치했다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Linux&#x2F;OS X</span><br><span class="line">python3 -m pip install -U discord.py</span><br><span class="line"></span><br><span class="line"># Windows</span><br><span class="line">py -3 -m pip install -U discord.py</span><br></pre></td></tr></table></figure>
-
-<p>라이브러리를 설치하고 <code>Python</code>파일을 만들어 코드를 작성해준다.<br>기존 자료들을 참고해서 코드를 작성했는데…<br><code>Discord</code> 모듈이 달라졌는지 코드가 안 먹혀서 이것저것 찾아보다 해결했다.</p>
-<p><a href="https://discordpy.readthedocs.io/en/latest/api.html">https://discordpy.readthedocs.io/en/latest/api.html#</a><br><em>참고한 사이트</em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> discord</span><br><span class="line"></span><br><span class="line">client = discord.Client()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 생성된 토큰을 입력해준다.</span></span><br><span class="line">token = <span class="string">"토큰"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 봇이 구동되었을 때 보여지는 코드</span></span><br><span class="line"><span class="meta">@client.event</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">on_ready</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"다음으로 로그인합니다"</span>)</span><br><span class="line">    print(client.user.name)</span><br><span class="line">    print(client.user.id)</span><br><span class="line">    print(<span class="string">"================"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 봇이 특정 메세지를 받고 인식하는 코드</span></span><br><span class="line"><span class="meta">@client.event</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(message)</span>:</span></span><br><span class="line">    <span class="comment"># 메세지를 보낸 사람이 봇일 경우 무시한다</span></span><br><span class="line">    <span class="keyword">if</span> message.author.bot:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> message.content.startswith(<span class="string">'!안녕'</span>):</span><br><span class="line">        channel = message.channel</span><br><span class="line">        <span class="keyword">await</span> channel.send(<span class="string">'반가워!'</span>)</span><br><span class="line"></span><br><span class="line">client.run(token)</span><br></pre></td></tr></table></figure>
-
-<p>코드를 작성하고 실행시킨다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">다음으로 로그인합니다</span><br><span class="line">TunghsBot</span><br><span class="line">[CLIENT ID]</span><br></pre></td></tr></table></figure>
-
-<p>위와 같이 출력되면 성공!</p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_Tunghs_Online.PNG" alt=""></p>
-<p>디스코드 내에 봇이 온라인으로 바뀐 걸 볼 수 있다.  </p>
-<p><img src="/img/2019-08-08-Make-a-Discord-Bot-with-Python/discordBot_Tunghs_Chat.PNG" alt=""></p>
-<p>채팅창에 지정한 <strong>!안녕</strong>을 입력하면 <strong>반가워!</strong>라고 동작한다면 성공!!  </p>
-<p>이로써 간단히 디스코드 봇을 만들었다. 앞으로 <code>Python</code>의 여러 기능을 응용해 다양한 기능이 추가된 봇을 구현하려고 한다.</p>
-
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/post/" rel="tag">post</a>
+                </div>
+            </div>
         </div>
         
         
@@ -221,13 +204,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/30/2019-08-30-KT-S:W-Developer-Conference-2019/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">KT S/W Developer Conference 2019 후기</span>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/">
+                <span class="level-item">Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -240,8 +223,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://tunghs.github.io/2019/08/08/Make-a-Discord-Bot-with-Python/';
-        this.page.identifier = '2019/08/08/Make-a-Discord-Bot-with-Python/';
+        this.page.url = 'https://tunghs.github.io/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/';
+        this.page.identifier = '2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -302,7 +285,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            7
+                            8
                         </p>
                     </a>
                 </div>
@@ -314,7 +297,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            0
+                            6
                         </p>
                     </a>
                 </div>
@@ -403,7 +386,55 @@
                 Categories
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/Conference/">
+            <span class="level-start">
+                <span class="level-item">Conference</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Dev/">
+            <span class="level-start">
+                <span class="level-item">Dev</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Dev/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Dev/WPF/">
+            <span class="level-start">
+                <span class="level-item">WPF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Etc/">
+            <span class="level-start">
+                <span class="level-item">Etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Hexo/">
+            <span class="level-start">
+                <span class="level-item">Hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -414,7 +445,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/post/" style="font-size: 10px;">post</a>
+        <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/post/" style="font-size: 20px;">post</a>
     </div>
 </div>
     
@@ -429,6 +460,25 @@
         
         <article class="media">
             
+            <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/CSharp/Cover.png" alt="WPF MVVM DataGrid 동적으로 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-10-25T10:51:42.000Z">2020-10-25</time></div>
+                    <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WPF MVVM DataGrid 동적으로 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/WPF/">WPF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기">
@@ -440,7 +490,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-09T08:29:13.000Z">2020-05-09</time></div>
                     <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -448,7 +498,7 @@
         
         <article class="media">
             
-            <a href="/2020/05/07/say-hello/" class="media-left">
+            <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/img/Say-Hello/thumbnail22.png" alt="Git Blog 다시 시작">
                 </p>
@@ -457,9 +507,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T13:05:04.000Z">2020-05-07</time></div>
-                    <a href="/2020/05/07/say-hello/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
+                    <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Etc/">Etc</a>
                     </p>
                 </div>
             </div>
@@ -478,7 +528,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-13T23:49:27.000Z">2019-10-14</time></div>
                     <a href="/2019/10/14/2019-10-14-Hexo-Blog-Graph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo 블로그 포스팅에 Flowchart 사용하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -497,26 +547,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:17:27.000Z">2019-09-16</time></div>
                     <a href="/2019/09/16/2019-09-16-Python-File-IO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python 파일 입출력</a>
                     <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/2019-09-07-Apply-Django-Bootstrap/main.png" alt="Django Bootstrap 적용하기">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T10:46:32.000Z">2019-09-07</time></div>
-                    <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Django Bootstrap 적용하기</a>
-                    <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/Python/">Python</a>
                     </p>
                 </div>
             </div>
@@ -532,6 +563,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/05/">
@@ -621,7 +663,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/post/">
                         <span class="tag">post</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -649,6 +691,25 @@
         
         <article class="media">
             
+            <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/CSharp/Cover.png" alt="WPF MVVM DataGrid 동적으로 사용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-10-25T10:51:42.000Z">2020-10-25</time></div>
+                    <a href="/2020/10/25/2020-10-25-WPF-Dynamic-Datagrid/" class="title has-link-black-ter is-size-6 has-text-weight-normal">WPF MVVM DataGrid 동적으로 사용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/WPF/">WPF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기">
@@ -660,7 +721,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-09T08:29:13.000Z">2020-05-09</time></div>
                     <a href="/2020/05/09/2020-05-09-Hexo-Icarus-Theme-Inline-Code-Block-Style-Change/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo Icarus 테마 인라인 코드 블럭 색상 수정하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -668,7 +729,7 @@
         
         <article class="media">
             
-            <a href="/2020/05/07/say-hello/" class="media-left">
+            <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/img/Say-Hello/thumbnail22.png" alt="Git Blog 다시 시작">
                 </p>
@@ -677,9 +738,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T13:05:04.000Z">2020-05-07</time></div>
-                    <a href="/2020/05/07/say-hello/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
+                    <a href="/2020/05/07/2020-05-07-Git-Blog-%EB%8B%A4%EC%8B%9C%EC%8B%9C%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Git Blog 다시 시작</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Etc/">Etc</a>
                     </p>
                 </div>
             </div>
@@ -698,7 +759,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-13T23:49:27.000Z">2019-10-14</time></div>
                     <a href="/2019/10/14/2019-10-14-Hexo-Blog-Graph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo 블로그 포스팅에 Flowchart 사용하기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Hexo/">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -717,26 +778,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:17:27.000Z">2019-09-16</time></div>
                     <a href="/2019/09/16/2019-09-16-Python-File-IO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python 파일 입출력</a>
                     <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/2019-09-07-Apply-Django-Bootstrap/main.png" alt="Django Bootstrap 적용하기">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T10:46:32.000Z">2019-09-07</time></div>
-                    <a href="/2019/09/07/2019-09-07-Apply-Django-Bootstrap/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Django Bootstrap 적용하기</a>
-                    <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Dev/">Dev</a> / <a class="has-link-grey -link" href="/categories/Dev/Python/">Python</a>
                     </p>
                 </div>
             </div>
@@ -752,6 +794,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/05/">
@@ -841,7 +894,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/post/">
                         <span class="tag">post</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -862,11 +915,11 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Python으로 디스코드 봇 만들기" height="28">
+                    <img src="/images/logo.png" alt="WPF MVVM DataGrid 동적으로 사용하기" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 Python&nbsp;
+                &copy; 2020 Tunghs&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
